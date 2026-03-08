@@ -1,0 +1,13 @@
+# render.yaml
+# This file tells Render.com how to deploy your application.
+# Just connect your GitHub repo to Render and it reads this file automatically.
+
+services:
+  - type: web
+    name: cloud-code-runner
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: MONGO_URI
+        sync: false   # You will enter this manually in Render dashboard

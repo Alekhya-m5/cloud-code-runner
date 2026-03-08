@@ -1,0 +1,7 @@
+# requirements.txt
+# Install all dependencies with: pip install -r requirements.txt
+
+flask==3.0.0          # Web framework - handles routing and serving pages
+pymongo==4.6.1        # MongoDB driver - lets Python talk to MongoDB Atlas
+python-dotenv==1.0.0  # Loads .env file so we don't hardcode secrets
+gunicorn==21.2.0      # Production server (used when deploying to Render/AWS)

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Cloud Code Runner</title>
+
+    <!-- Google Fonts: JetBrains Mono for code, Syne for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+    <!-- ============================================================
+         HEADER / NAVBAR
+    ============================================================ -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <span class="logo-text">Cloud<span class="logo-accent">Runner</span></span>
+            </div>
+            <div class="header-badge">
+                <span class="dot"></span> Cloud Powered
+            </div>
+        </div>
+    </header>
+
+    <!-- ============================================================
+         MAIN DASHBOARD
+    ============================================================ -->
+    <main class="dashboard">
+
+        <!-- LEFT PANEL: Code Editor + Controls -->
+        <section class="panel editor-panel">
+            <div class="panel-header">
+                <h2 class="panel-title">
+                    <span class="panel-icon">🐍</span> Python Editor
+                </h2>
+                <div class="lang-badge">Python 3</div>
+            </div>
+
+            <!-- Title Input -->
+            <div class="input-group">
+                <label for="snippet-title">Snippet Title</label>
+                <input
+                    type="text"
+                    id="snippet-title"
+                    placeholder="e.g. Hello World, Fibonacci..."
+                    maxlength="50"
+                />
+            </div>
+
+            <!-- Code Textarea -->
+            <div class="editor-wrapper">
+                <div class="line-numbers" id="line-numbers">1</div>
+                <textarea
+                    id="code-editor"
+                    class="code-editor"
+                    spellcheck="false"
+                    placeholder="# Write your Python code here...
+print('Hello, Cloud World!')"
+                ></textarea>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="btn-row">
+                <button class="btn btn-run" id="run-btn" onclick="runCode()">
+                    <span class="btn-icon">▶</span> Run Code
+                </button>
+                <button class="btn btn-save" id="save-btn" onclick="saveCode()">
+                    <span class="btn-icon">☁</span> Save to Cloud
+                </button>
+                <button class="btn btn-clear" onclick="clearEditor()">
+                    <span class="btn-icon">✕</span> Clear
+                </button>
+            </div>
+
+            <!-- Example snippets -->
+            <div class="examples">
+                <span class="examples-label">Quick examples:</span>
+                <button class="example-chip" onclick="loadExample('hello')">Hello World</button>
+                <button class="example-chip" onclick="loadExample('fibonacci')">Fibonacci</button>
+                <button class="example-chip" onclick="loadExample('list')">List Ops</button>
+            </div>
+        </section>
+
+        <!-- RIGHT PANEL: Output + History -->
+        <section class="right-panels">
+
+            <!-- OUTPUT CONSOLE -->
+            <div class="panel output-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">
+                        <span class="panel-icon">🖥</span> Output Console
+                    </h2>
+                    <div class="status-indicator" id="status-indicator">
+                        <span class="dot dot-idle"></span>
+                        <span id="status-text">Ready</span>
+                    </div>
+                </div>
+
+                <!-- Loader bar (hidden by default) -->
+                <div class="loader-bar" id="loader-bar"></div>
+
+                <!-- Output display -->
+                <div class="output-box" id="output-box">
+                    <span class="output-placeholder">
+                        Output will appear here after you run your code...
+                    </span>
+                </div>
+            </div>
+
+            <!-- HISTORY SECTION -->
+            <div class="panel history-panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">
+                        <span class="panel-icon">📦</span> Cloud History
+                    </h2>
+                    <button class="btn-refresh" onclick="loadHistory()">↻ Refresh</button>
+                </div>
+
+                <div class="history-list" id="history-list">
+                    <p class="history-empty">No saved snippets yet. Save your first program!</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="footer">
+        <p>
+            Cloud Code Runner &nbsp;·&nbsp; Built with
+            <strong>Flask</strong>, <strong>MongoDB Atlas</strong> &amp; <strong>Python</strong>
+            &nbsp;·&nbsp; ☁ Cloud Computing Project
+        </p>
+    </footer>
+
+    <!-- Toast notification container -->
+    <div class="toast" id="toast"></div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

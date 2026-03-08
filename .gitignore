@@ -1,0 +1,28 @@
+# .gitignore
+# Files and folders that should NOT be uploaded to GitHub
+
+# Environment variables (contains your MongoDB password!)
+.env
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment folder
+venv/
+env/
+.venv/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+
+# Mac system files
+.DS_Store
+
+# Temporary files
+*.tmp
+*.log
